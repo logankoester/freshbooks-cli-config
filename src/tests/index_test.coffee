@@ -20,7 +20,7 @@ exports.group =
     test.doesNotThrow ->
       nixt()
         .expect(showHelp)
-        .run('bin/config.coffee')
+        .run('bin/freshbooks-config')
         .code(0)
         .end(test.done)
 
@@ -28,14 +28,14 @@ exports.group =
     test.doesNotThrow ->
       nixt()
         .expect(showHelp)
-        .run('bin/config.coffee --help')
+        .run('bin/freshbooks-config --help')
         .code(0)
         .end(test.done)
 
   'Setting a value': (test) ->
     test.doesNotThrow ->
       nixt()
-        .run("bin/config.coffee -k foo -v bar -f #{configFile}")
+        .run("bin/freshbooks-config -k foo -v bar -f #{configFile}")
         .exist(configFile)
         .code(0)
         .match(configFile, /"foo": "bar"/)
@@ -44,8 +44,8 @@ exports.group =
   'Getting a value': (test) ->
     test.doesNotThrow ->
       nixt()
-        .exec("bin/config.coffee -k foo -v baz -f #{configFile}")
-        .run("bin/config.coffee -k foo -f #{configFile}")
+        .exec("bin/freshbooks-config -k foo -v baz -f #{configFile}")
+        .run("bin/freshbooks-config -k foo -f #{configFile}")
         .stdout('baz')
         .code(0)
         .end(test.done)

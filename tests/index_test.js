@@ -28,22 +28,22 @@
   exports.group = {
     'No options': function(test) {
       return test.doesNotThrow(function() {
-        return nixt().expect(showHelp).run('bin/config.coffee').code(0).end(test.done);
+        return nixt().expect(showHelp).run('bin/freshbooks-config').code(0).end(test.done);
       });
     },
     '--help': function(test) {
       return test.doesNotThrow(function() {
-        return nixt().expect(showHelp).run('bin/config.coffee --help').code(0).end(test.done);
+        return nixt().expect(showHelp).run('bin/freshbooks-config --help').code(0).end(test.done);
       });
     },
     'Setting a value': function(test) {
       return test.doesNotThrow(function() {
-        return nixt().run("bin/config.coffee -k foo -v bar -f " + configFile).exist(configFile).code(0).match(configFile, /"foo": "bar"/).end(test.done);
+        return nixt().run("bin/freshbooks-config -k foo -v bar -f " + configFile).exist(configFile).code(0).match(configFile, /"foo": "bar"/).end(test.done);
       });
     },
     'Getting a value': function(test) {
       return test.doesNotThrow(function() {
-        return nixt().exec("bin/config.coffee -k foo -v baz -f " + configFile).run("bin/config.coffee -k foo -f " + configFile).stdout('baz').code(0).end(test.done);
+        return nixt().exec("bin/freshbooks-config -k foo -v baz -f " + configFile).run("bin/freshbooks-config -k foo -f " + configFile).stdout('baz').code(0).end(test.done);
       });
     }
   };

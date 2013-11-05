@@ -51,7 +51,6 @@ The test suite is implemented with
 
 To rebuild & run the tests
 
-    $ npm install -g coffee-script
     $ git clone https://github.com/logankoester/freshbooks-cli-config.git
     $ cd freshbooks-cli-config
     $ npm install

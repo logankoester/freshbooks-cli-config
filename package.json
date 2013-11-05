@@ -8,7 +8,7 @@
     "doc": "readme"
   },
   "bin": {
-    "freshbooks-config": "./bin/config.coffee"
+    "freshbooks-config": "./bin/freshbooks-config"
   },
   "scripts": {
     "test": "grunt test"
