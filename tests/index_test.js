@@ -9,16 +9,16 @@
 
   showHelp = function(result) {
     if (!(result.stdout.match(/--key/))) {
-      new Error('--key should be mentioned');
+      return new Error('--key should be mentioned');
     }
     if (!(result.stdout.match(/--value/))) {
-      new Error('--value should be mentioned');
+      return new Error('--value should be mentioned');
     }
     if (!(result.stdout.match(/--file/))) {
-      new Error('--file should be mentioned');
+      return new Error('--file should be mentioned');
     }
     if (!(result.stdout.match(/--edit/))) {
-      new Error('--edit should be mentioned');
+      return new Error('--edit should be mentioned');
     }
     if (!(result.stdout.match(/--help/))) {
       return new Error('--help should be mentioned');
