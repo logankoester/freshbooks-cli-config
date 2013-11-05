@@ -19,7 +19,6 @@
     "email": "logan@logankoester.com",
     "url": "http://logankoester.com"
   },
-  "license": "MIT",
   "dependencies": {
     "nopt": "~2.1.2",
     "nconf": "~0.6.8",
