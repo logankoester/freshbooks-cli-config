@@ -1,11 +1,13 @@
 (function() {
-  var configFile, nixt, path, showHelp;
+  var config, configFile, nixt, path, showHelp;
 
   nixt = require('nixt');
 
   path = require('path');
 
-  configFile = 'tests/config_file';
+  configFile = path.join(__dirname, 'config_file');
+
+  config = require('../index');
 
   showHelp = function(result) {
     if (!(result.stdout.match(/--key/))) {
@@ -26,6 +28,25 @@
   };
 
   exports.group = {
+    'Using the default config file': function(test) {
+      var expectedPath;
+      expectedPath = path.join(process.env['HOME'], '.freshbooks');
+      test.expect(1);
+      test.equals(expectedPath, config.configFile());
+      return test.done();
+    },
+    'Using environment variables to specify a config file': function(test) {
+      process.env['freshbooks_config'] = configFile;
+      test.expect(1);
+      test.equals(configFile, config.configFile());
+      return test.done();
+    },
+    'Getting a default value in a script': function(test) {
+      process.env['freshbooks_config'] = configFile;
+      test.expect(1);
+      test.equals('default_value', config.getConf().get('test:get_default_value'));
+      return test.done();
+    },
     'No options': function(test) {
       return test.doesNotThrow(function() {
         return nixt().expect(showHelp).run('bin/freshbooks-config').code(0).end(test.done);

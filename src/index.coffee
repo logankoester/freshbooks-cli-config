@@ -5,48 +5,65 @@ nconf = require 'nconf'
 exec = require('child_process').exec
 editor = require 'editor'
 
-displayHelp = ->
-  manpage = path.join(__dirname, 'man', 'freshbooks-config.1')
-  cmd = "man --local-file #{manpage}"
-  exec cmd, (err, stdout, stderr) ->
-    process.stdout.write "#{stdout}"
-    process.stderr.write "#{stderr}"
-    console.error err if err
+exports.defaults =
+  api:
+    url: 'https://freshbooks.com/api'
+    version: 2.1
 
-parsedOptions = nopt
-  key: String
-  value: String
-  file: path
-  edit: Boolean
-  help: Boolean
-,
-  k: ['--key']
-  v: ['--value']
-  f: ['--file']
-  e: ['--edit']
-  h: ['--help']
-, process.argv, 2
+exports.configFile = ->
+  process.env['freshbooks_config'] || path.join(
+    process.env['HOME'], '.freshbooks'
+  )
 
-configFile = parsedOptions.file || path.join(
-  process.env['HOME'], '.freshbooks'
-)
+exports.getConf = ->
+  nconf
+    .file(exports.configFile())
+    .env()
+    .defaults(exports.DEFAULTS)
 
-nconf.file file: configFile
+exports.command = ->
+  displayHelp = ->
+    manpage = path.join(__dirname, 'man', 'freshbooks-config.1')
+    cmd = "man --local-file #{manpage}"
+    exec cmd, (err, stdout, stderr) ->
+      process.stdout.write "#{stdout}"
+      process.stderr.write "#{stderr}"
+      console.error err if err
 
-if parsedOptions.help
-  displayHelp()
+  parsedOptions = nopt
+    key: String
+    value: String
+    file: path
+    edit: Boolean
+    help: Boolean
+  ,
+    k: ['--key']
+    v: ['--value']
+    f: ['--file']
+    e: ['--edit']
+    h: ['--help']
+  , process.argv, 2
 
-else if parsedOptions.value
-  nconf.set parsedOptions.key, parsedOptions.value
-  nconf.save (err) ->
-    fs.readFile configFile, (err, data) -> console.error err if err
+  configFile = parsedOptions.file || path.join(
+    process.env['HOME'], '.freshbooks'
+  )
 
-else if parsedOptions.key
-  value = nconf.get(parsedOptions.key)
-  process.stdout.write "#{value}\n"
+  nconf.file file: configFile
 
-else if parsedOptions.edit
-  editor configFile
+  if parsedOptions.help
+    displayHelp()
 
-else
-  displayHelp()
+  else if parsedOptions.value
+    nconf.set parsedOptions.key, parsedOptions.value
+    nconf.save (err) ->
+      fs.readFile configFile, (err, data) -> console.error err if err
+
+  else if parsedOptions.key
+    value = nconf.get(parsedOptions.key)
+    process.stdout.write "#{value}\n"
+
+  else if parsedOptions.edit
+    editor configFile
+
+  else
+    displayHelp()

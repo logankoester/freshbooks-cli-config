@@ -7,5 +7,5 @@ exports.command = {
 };
 
 if (require.main === module) {
-  require(path.join(__dirname, '..', 'index.js'));
+  require(path.join(__dirname, '..', 'index.js')).command();
 }

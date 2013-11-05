@@ -1,6 +1,7 @@
 nixt = require 'nixt'
 path = require 'path'
-configFile = 'tests/config_file'
+configFile = path.join(__dirname, 'config_file')
+config = require '../index'
 
 showHelp = (result) ->
   if !(result.stdout.match(/--key/))
@@ -15,6 +16,23 @@ showHelp = (result) ->
     return new Error('--help should be mentioned')
 
 exports.group =
+  'Using the default config file': (test) ->
+    expectedPath = path.join(process.env['HOME'], '.freshbooks')
+    test.expect(1)
+    test.equals expectedPath, config.configFile()
+    test.done()
+
+  'Using environment variables to specify a config file': (test) ->
+    process.env['freshbooks_config'] = configFile
+    test.expect(1)
+    test.equals configFile, config.configFile()
+    test.done()
+
+  'Getting a default value in a script': (test) ->
+    process.env['freshbooks_config'] = configFile
+    test.expect(1)
+    test.equals 'default_value', config.getConf().get('test:get_default_value')
+    test.done()
 
   'No options': (test) ->
     test.doesNotThrow ->
