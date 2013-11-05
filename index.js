@@ -15,7 +15,7 @@
 
   displayHelp = function() {
     var cmd, manpage;
-    manpage = path.join(__dirname, 'man', 'freshbooks-cli-config.1');
+    manpage = path.join(__dirname, 'man', 'freshbooks-config.1');
     cmd = "man --local-file " + manpage;
     return exec(cmd, function(err, stdout, stderr) {
       process.stdout.write("" + stdout);

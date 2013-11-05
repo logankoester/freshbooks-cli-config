@@ -41,10 +41,12 @@ module.exports = (grunt) ->
     readme_generator:
       help:
         options:
-          output: 'freshbooks-cli-config.md'
+          output: 'freshbooks-config.md'
           table_of_contents: false
           generate_footer: false
           has_travis: false
+          package_title: 'freshbooks-config'
+          package_name: 'freshbooks-config'
         order:
           'usage.md': 'Usage'
           'examples.md': 'Examples'
@@ -82,12 +84,12 @@ module.exports = (grunt) ->
     done = @async()
     grunt.util.spawn
       cmd: './marked-man'
-      args: [path.join(__dirname, 'freshbooks-cli-config.md')]
+      args: [path.join(__dirname, 'freshbooks-config.md')]
       opts:
         cwd: path.join(__dirname, 'node_modules', 'marked-man', 'bin')
     , (error, result, code) ->
       throw error if error
-      out = path.join __dirname, 'man', 'freshbooks-cli-config.1'
+      out = path.join __dirname, 'man', 'freshbooks-config.1'
       grunt.file.write out, result.stdout
       done()
 

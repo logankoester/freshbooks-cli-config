@@ -6,7 +6,7 @@ exec = require('child_process').exec
 editor = require 'editor'
 
 displayHelp = ->
-  manpage = path.join(__dirname, 'man', 'freshbooks-cli-config.1')
+  manpage = path.join(__dirname, 'man', 'freshbooks-config.1')
   cmd = "man --local-file #{manpage}"
   exec cmd, (err, stdout, stderr) ->
     process.stdout.write "#{stdout}"
