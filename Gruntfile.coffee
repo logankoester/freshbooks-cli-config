@@ -52,6 +52,7 @@ module.exports = (grunt) ->
         options:
           github_username: 'logankoester'
           generate_footer: false
+          table_of_contents: false
         order:
           'overview.md': 'Overview'
           'usage.md': 'Usage'

@@ -3,23 +3,16 @@
 
 > Configuration manager for freshbooks-cli
 
-## Jump to Section
-
-* [Overview](#overview)
-* [Usage](#usage)
-* [Examples](#examples)
-* [Contributing](#contributing)
-* [License](#license)
-
 ## Overview
-[[Back To Top]](#jump-to-section)
+
+[freshbooks-cli](https://github.com/logankoester/freshbooks-cli) is a
+command-line interface to the [FreshBooks](http://freshbooks.com/) API.
 
 `freshbooks-cli-config` implements the `config` subcommand for
-[freshbooks-cli](https://github.com/logankoester/freshbooks-cli)/logankoester/freshbooks-cli).
+[freshbooks-cli](https://github.com/logankoester/freshbooks-cli).
 
 
 ## Usage
-[[Back To Top]](#jump-to-section)
 
     --key, -k [String] - A configuration key to operate on. If --value is not set, the
                     current value will be written to STDOUT. Keys are namespaced
@@ -36,7 +29,6 @@
 
 
 ## Examples
-[[Back To Top]](#jump-to-section)
 
     # Set the Freshbooks API base url
     $ freshbooks-config -k api:url -v "https://YOURACCOUNT.freshbooks.com/api"
@@ -52,7 +44,6 @@
 
 
 ## Contributing
-[[Back To Top]](#jump-to-section)
 
 The test suite is implemented with
 [nodeunit](https://github.com/caolan/nodeunit) and
@@ -76,7 +67,6 @@ To contribute back, fork the repo and open a pull request with your changes.
 
 
 ## License
-[[Back To Top]](#jump-to-section)
 
 Copyright (c) 2013 Logan Koester
 Licensed under the MIT license.
