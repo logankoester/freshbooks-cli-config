@@ -1,13 +1,7 @@
-# FreshBooks: CLI Config
-> Configuration manager for freshbooks-cli
-
+# freshbooks-cli-config 
 [![Build Status](https://secure.travis-ci.org/logankoester/freshbooks-cli-config.png?branch=master)](http://travis-ci.org/logankoester/freshbooks-cli-config)
-[![status](https://sourcegraph.com/api/repos/github.com/logankoester/freshbooks-cli-config/badges/status.png)](https://sourcegraph.com/github.com/logankoester/freshbooks-cli-config)
-[![Dependency Status](https://david-dm.org/logankoester/freshbooks-cli-config.png)](https://david-dm.org/logankoester/freshbooks-cli-config)
-[![devDependency Status](https://david-dm.org/logankoester/freshbooks-cli-config/dev-status.png)](https://david-dm.org/logankoester/freshbooks-cli-config#info=devDependencies)
-[![Gittip](http://img.shields.io/gittip/logankoester.png)](https://www.gittip.com/logankoester/)
 
-[![NPM](https://nodei.co/npm/freshbooks-cli-config.png?downloads=true)](https://nodei.co/npm/freshbooks-cli-config/)
+> Configuration manager for freshbooks-cli
 
 ## Overview
 
@@ -106,14 +100,7 @@ To contribute back, fork the repo and open a pull request with your changes.
 
 ## License
 
-Copyright (c) 2013 Logan Koester
+Copyright (c) 2013-2014 Logan Koester
 Licensed under the MIT license.
 
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/logankoester/freshbooks-cli-config/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
-[![xrefs](https://sourcegraph.com/api/repos/github.com/logankoester/freshbooks-cli-config/badges/xrefs.png)](https://sourcegraph.com/github.com/logankoester/freshbooks-cli-config)
-[![funcs](https://sourcegraph.com/api/repos/github.com/logankoester/freshbooks-cli-config/badges/funcs.png)](https://sourcegraph.com/github.com/logankoester/freshbooks-cli-config)
-[![top func](https://sourcegraph.com/api/repos/github.com/logankoester/freshbooks-cli-config/badges/top-func.png)](https://sourcegraph.com/github.com/logankoester/freshbooks-cli-config)
-[![library users](https://sourcegraph.com/api/repos/github.com/logankoester/freshbooks-cli-config/badges/library-users.png)](https://sourcegraph.com/github.com/logankoester/freshbooks-cli-config)
-[![authors](https://sourcegraph.com/api/repos/github.com/logankoester/freshbooks-cli-config/badges/authors.png)](https://sourcegraph.com/github.com/logankoester/freshbooks-cli-config)
