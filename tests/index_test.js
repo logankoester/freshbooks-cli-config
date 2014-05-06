@@ -66,6 +66,11 @@
       return test.doesNotThrow(function() {
         return nixt().exec("bin/freshbooks-config -k foo -v baz -f " + configFile).run("bin/freshbooks-config -k foo -f " + configFile).stdout('baz').code(0).end(test.done);
       });
+    },
+    'Getting a nested object value': function(test) {
+      return test.doesNotThrow(function() {
+        return nixt().exec("bin/freshbooks-config -k nest:subnest:item -v nested_item -f " + configFile).run("bin/freshbooks-config -k nest -f " + configFile).stdout('{"subnest":{"item":"nested_item"}}').code(0).end(test.done);
+      });
     }
   };
 

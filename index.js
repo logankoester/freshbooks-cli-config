@@ -72,7 +72,11 @@
       });
     } else if (parsedOptions.key) {
       value = nconf.get(parsedOptions.key);
-      return process.stdout.write("" + value + "\n");
+      if (value instanceof Object) {
+        return process.stdout.write("" + (JSON.stringify(value)) + "\n");
+      } else {
+        return process.stdout.write("" + value + "\n");
+      }
     } else if (parsedOptions.edit) {
       return editor(configFile);
     } else {

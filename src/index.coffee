@@ -60,7 +60,10 @@ exports.command = ->
 
   else if parsedOptions.key
     value = nconf.get(parsedOptions.key)
-    process.stdout.write "#{value}\n"
+    if value instanceof Object
+      process.stdout.write "#{JSON.stringify(value)}\n"
+    else
+      process.stdout.write "#{value}\n"
 
   else if parsedOptions.edit
     editor configFile

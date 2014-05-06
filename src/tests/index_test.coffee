@@ -67,3 +67,12 @@ exports.group =
         .stdout('baz')
         .code(0)
         .end(test.done)
+
+  'Getting a nested object value': (test) ->
+    test.doesNotThrow ->
+      nixt()
+        .exec("bin/freshbooks-config -k nest:subnest:item -v nested_item -f #{configFile}")
+        .run("bin/freshbooks-config -k nest -f #{configFile}")
+        .stdout('{"subnest":{"item":"nested_item"}}')
+        .code(0)
+        .end(test.done)
